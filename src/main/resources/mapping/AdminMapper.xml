@@ -70,4 +70,20 @@
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAllAdmin" resultMap="BaseResultMap" >
+    select * from admin
+  </select>
+
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from admin
+  </select>
+
+  <select id="queryAllAdmin" resultType="com.ssm.model.Admin" parameterType="com.ssm.util.SeeRecord">
+    SELECT
+    *
+    FROM admin
+    limit #{page.startPos},#{page.pageSize}
+    <!--startPos开始页 ， pageSize每页显示的记录条数-->
+  </select>
 </mapper>
